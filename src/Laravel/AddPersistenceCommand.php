@@ -44,5 +44,4 @@ class AddPersistenceCommand extends Command
             file_put_contents($repoFullPath, $repo);
         }
     }
-
 }
