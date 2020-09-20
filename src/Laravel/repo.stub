@@ -33,6 +33,14 @@ class %%RNAME%%
         return $this->hydrateCollection($rows);
     }
 
+    public function findBySlug(string $slug, string $exclusion = '', string $column = 'slug'): ?%%SHORTCLASS%%
+    {
+        $row = $this->db->table($this->table)->where($column, $slug)->where($column, '!=', $exclusion)->first();
+        return $row ? $this->hydrate($row) : null;
+    }
+
+    // Hydrate ----------------------------------------------------------------
+
     private function hydrate(stdClass $data): %%SHORTCLASS%%
     {
         return $this->hydrator->hydrate((array)$data);
